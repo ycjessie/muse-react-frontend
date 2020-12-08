@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import SongList from './SongList'
 class SongContainer extends Component {
     constructor(props){
         super(props);
@@ -26,9 +27,8 @@ class SongContainer extends Component {
       };
       
       render(){
-        return (
-          "I'm the SongContainer"
-          )
+        return <SongList songs={this.state.songs} />
+          
       }
 }
  

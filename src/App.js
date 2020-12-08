@@ -1,14 +1,12 @@
 import './App.css';
 import SongContainer from './SongContainer'
-class App extends Component {
-
-  render() { 
-    return (
+function App(){
+  return (
       <div className="App">
-      <SongContainer />
+        <SongContainer />
       </div>
      );
-  }
+  
 }
  
 export default App;

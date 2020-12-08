@@ -7,12 +7,12 @@ function SongList(props){
     return (
         <Card key={song.id}>
           <Card.Content>
-            <Card.Header>{song.name}</Card.Header>
-            <Card.Description>{song.breed}</Card.Description>
+            <Card.Header>{song.title}</Card.Header>
+            <Card.Description>{song.artist}</Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <Button>DeleteDog</Button>
-            <Button>Edit Dog</Button>
+            <Button>Delete Song</Button>
+            <Button>Edit Song</Button>
           </Card.Content>
         </Card>
         )
