@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+//https://git.generalassemb.ly/prudential-0921/flask-react-post-delete-dog-app
 // make sure to import the form
 import CreateSongForm from './CreateSongForm';
 import SongList from './SongList'
@@ -33,11 +34,20 @@ class SongContainer extends Component {
     
         try {
           // The createdDogResponse variable will store the response from the Flask API
-          const createdSongResponse = await axios.post(
-            process.env.REACT_APP_FLASK_API_URL + '/api/v1/songs/',
-            song
-          );
-    
+          //Option 1
+          // const createdSongResponse = await axios.post(
+          //   process.env.REACT_APP_FLASK_API_URL + '/api/v1/songs/',
+          //   song
+          // );
+          //Option 2
+          const createdSongResponse = await axios({
+            method: 'POST',
+            url: process.env.REACT_APP_FLASK_API_URL + '/api/v1/songs/',
+            data: song,
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
           // we are emptying all the dogs that are living in state into a new array,
           // and then adding the dog we just created to the end of it
           // the new dog which is called parsedResponse.data
