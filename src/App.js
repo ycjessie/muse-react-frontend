@@ -1,8 +1,13 @@
-import React, { Component } from 'react';
+import './App.css';
+import SongContainer from './SongContainer'
 class App extends Component {
 
   render() { 
-    return ('MUSE APP'  );
+    return (
+      <div className="App">
+      <SongContainer />
+      </div>
+     );
   }
 }
  
