@@ -33,7 +33,7 @@ class SongContainer extends Component {
         console.log(song);
     
         try {
-          // The createdDogResponse variable will store the response from the Flask API
+          // The createdSongResponse variable will store the response from the Flask API
           //Option 1
           // const createdSongResponse = await axios.post(
           //   process.env.REACT_APP_FLASK_API_URL + '/api/v1/songs/',
@@ -49,9 +49,9 @@ class SongContainer extends Component {
               'Content-Type': 'application/json',
             },
           });
-          // we are emptying all the dogs that are living in state into a new array,
-          // and then adding the dog we just created to the end of it
-          // the new dog which is called parsedResponse.data
+          // we are emptying all the songs that are living in state into a new array,
+          // and then adding the song we just created to the end of it
+          // the new song which is called parsedResponse.data
     
           console.log(createdSongResponse.data.data, ' this is response');
           this.setState({
@@ -68,7 +68,7 @@ class SongContainer extends Component {
         );
         console.log(deleteSongResponse);
         // Now that the db has deleted our item, we need to remove it from state
-        // Then make the delete request, then remove the dog from the state array using filter
+        // Then make the delete request, then remove the song from the state array using filter
         this.setState({ songs: this.state.songs.filter((song) => song.id !== id) });
     
         console.log(deleteSongResponse, ' response from Flask server');
