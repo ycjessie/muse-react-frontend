@@ -4,18 +4,18 @@ import axios from 'axios';
 // make sure to import the form
 import CreateSongForm from './CreateSongForm';
 import SongList from './SongList'
+  
 class SongContainer extends Component {
-    state = {
-          songs: [],
-          songToEdit: {
-            title: '',
-            artist: '',
-            album: '',
-            id: ''
-          },
-          showEditModal: false//pop up open/close window
-      }
-      
+  state = {
+    songs: [],
+    songToEdit: {
+      title: '',
+      artist: '',
+      album: '',
+      id: ''
+    },
+    showEditModal: false//pop up open/close window
+  }
       componentDidMount(){
         this.getSongs();
       }
