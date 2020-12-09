@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid } from "semantic-ui-react";
 import axios from 'axios';
 //https://git.generalassemb.ly/prudential-0921/flask-react-post-delete-dog-app
 // make sure to import the form
@@ -89,16 +90,68 @@ class SongContainer extends Component {
           },
         });
       };
+      //onClick to Edit Song
+      handleEditChange = (e) => {
+        this.setState({
+          songToEdit: {
+            ...this.state.songToEdit,
+            [e.currentTarget.name]: e.currentTarget.value,
+          },
+        });
+      };
+      //Edit screen pop up for changes
+      closeAndEdit = async (e) => {
+        e.preventDefault();
+        try {
+          const editResponse = await axios.put(
+            process.env.REACT_APP_FLASK_API_URL +
+              '/api/v1/songs/' +
+              this.state.songToEdit.id,
+            this.state.songToEdit
+          );
+      
+          console.log(editResponse, ' parsed edit');
+      
+          const newSongArrayWithEdit = this.state.songs.map((song) => {
+            if (song.id === editResponse.data.data.id) {
+              song = editResponse.data.data;
+            }
+      
+            return song;
+          });
+      
+          this.setState({
+            showEditModal: false,//windows
+            songs: newSongArrayWithEdit,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      };
       render(){
-        return <>
-        <SongList 
-          songs={this.state.songs} 
-          deleteSong={this.deleteSong}
-          //pass function to render; 
-          //add onClick in SongList
-          openAndEdit={this.openAndEdit} />
-        <CreateSongForm addSong={this.addSong}/>
-        </>
+        return (
+          <Grid columns={2} divided textAlign='center' style={{ height: '100%' }} verticalAlign='top' stackable>
+        <Grid.Row>
+          <Grid.Column>
+            <SongList 
+              songs={this.state.songs} 
+              deleteSong={this.deleteSong}
+              //pass function to render; 
+              //add onClick in SongList
+              openAndEdit={this.openAndEdit} />
+          </Grid.Column>
+          <Grid.Column>
+            <CreateSongForm addSong={this.addSong}/>
+          </Grid.Column>
+          
+          <EditSongModal 
+          handleEditChange={this.handleEditChange} 
+          open={this.state.showEditModal} 
+          songToEdit={this.state.songToEdit} 
+          closeAndEdit={this.closeAndEdit}/>
+        </Grid.Row>
+      </Grid>
+        )
           
       }
 }
