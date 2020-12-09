@@ -5,13 +5,10 @@ import axios from 'axios';
 import CreateSongForm from './CreateSongForm';
 import SongList from './SongList'
 class SongContainer extends Component {
-    constructor(props){
-        super(props);
-    
-        this.state = {
+    state = {
           songs: []
         }
-      }
+      
       componentDidMount(){
         this.getSongs();
       }
