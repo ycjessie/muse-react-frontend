@@ -13,7 +13,7 @@ class SongContainer extends Component {
             album: '',
             id: ''
           },
-          showEditModal: false
+          showEditModal: false//pop up open/close window
       }
       
       componentDidMount(){
@@ -77,9 +77,25 @@ class SongContainer extends Component {
     
         console.log(deleteSongResponse, ' response from Flask server');
       };
+      openAndEdit = (songFromTheList) => {
+        console.log(songFromTheList, ' songToEdit  ');
+      
+        this.setState({
+          showEditModal: true,
+          songToEdit: {
+            ...songFromTheList,//spread operator
+            //lifting up from the DogList component.
+          },
+        });
+      };
       render(){
         return <>
-        <SongList songs={this.state.songs} deleteSong={this.deleteSong} />
+        <SongList 
+          songs={this.state.songs} 
+          deleteSong={this.deleteSong}
+          //pass function to render; 
+          //add onClick in SongList
+          openAndEdit={this.openAndEdit} />
         <CreateSongForm addSong={this.addSong}/>
         </>
           
