@@ -26,13 +26,14 @@ const EditSongModal = (props) => {
           <Form.Input
             type="text"
             name="album"
-            value={props.songToEdit.owner}
+            value={props.songToEdit.album}
             onChange={props.handleEditChange}
           />
           <Modal.Actions>
             <Button color="green" type="submit">
               Edit Song
             </Button>
+        
           </Modal.Actions>
         </Form>
       </Modal.Content>
