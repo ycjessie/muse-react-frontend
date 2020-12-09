@@ -6,8 +6,15 @@ import CreateSongForm from './CreateSongForm';
 import SongList from './SongList'
 class SongContainer extends Component {
     state = {
-          songs: []
-        }
+          songs: [],
+          songToEdit: {
+            title: '',
+            artist: '',
+            album: '',
+            id: ''
+          },
+          showEditModal: false
+      }
       
       componentDidMount(){
         this.getSongs();
