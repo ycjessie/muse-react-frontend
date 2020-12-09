@@ -24,11 +24,11 @@ class CreateSongForm extends Component {
               this.setState  ({title: '',artist: '',album: ''});
             }}>
               <Label>Song:</Label>
-              <Form.Input Required type='text' name='title' value={this.state.title} onChange={this.handleChange}/>
+              <Form.Input required type='text' name='title' value={this.state.title} onChange={this.handleChange}/>
               <Label>Artist:</Label>
-              <Form.Input type='text' name='artist' value={this.state.artist} onChange={this.handleChange}/>
+              <Form.Input required type='text' name='artist' value={this.state.artist} onChange={this.handleChange}/>
               <Label>Album:</Label>
-              <Form.Input type='text' name='album' value={this.state.album} onChange={this.handleChange}/>
+              <Form.Input required type='text' name='album' value={this.state.album} onChange={this.handleChange}/>
               <Button type='Submit'>Create Song</Button>
             </Form>
           </Segment>
